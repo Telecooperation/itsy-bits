@@ -1,0 +1,4 @@
+16mm:
+Mic				House
+Drum			Circle_Cut
+Guitar			Cirlce_Minus_Circle

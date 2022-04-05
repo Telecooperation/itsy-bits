@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="moon.svg"
+   id="svg6"
+   version="1.1"
+   viewBox="-6 -10 14.000002 19.960522"
+   height="19.960522mm"
+   width="14.000002mm">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>OpenSCAD Model</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg6"
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="37.72067"
+     inkscape:cx="26.456695"
+     inkscape:zoom="3.3207782"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     showgrid="false"
+     id="namedview8"
+     inkscape:window-height="480"
+     inkscape:window-width="944"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <title
+     id="title2">OpenSCAD Model</title>
+  <path
+     id="path4"
+     stroke-width="0"
+     fill="#3e558b"
+     stroke="#000000"
+     d="m 5.8738105,9.8031105 1.21634,-0.31231 0.90985,-0.36021 -0.25783,-0.10208 -1.10046,-0.60498 -1.01598,-0.73818 -0.91543,-0.85965 -0.80046,-0.9676 -0.67292,-1.06032 -0.53468,-1.13628 -0.38806,-1.19436 -0.23532,-1.23357 -0.07886,-1.25331 0.07886,-1.25331 0.23532,-1.23357 0.38806,-1.19436 0.53468,-1.13628 0.67292,-1.06032 0.80046,-0.9676 0.91543,-0.85965 1.01598,-0.73818 1.10046,-0.60498 0.25783,-0.10208 -0.90985,-0.36021 -1.21634,-0.31231 -1.24591,-0.15741 h -1.2558 l -1.24591,0.15741 -1.216354,0.31231 -1.167618,0.46229 -1.100468,0.60498 -1.01597,0.73818 -0.91544,0.85965 -0.80047,0.9676 -0.67292,1.06032 -0.53469,1.13628 -0.38808,1.19436 -0.23532,1.23357 -0.07886,1.25331 0.07886,1.25331 0.23532,1.23357 0.38808,1.19436 0.53469,1.13628 0.67292,1.06032 0.80047,0.9676 0.91544,0.85965 1.01597,0.73818 1.100468,0.60498 1.167618,0.46229 1.216354,0.31231 1.24591,0.15741 h 1.2558 z" />
+</svg>

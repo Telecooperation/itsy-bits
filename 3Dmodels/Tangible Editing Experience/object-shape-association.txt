@@ -1,0 +1,5 @@
+12mm:
+Marker red		House
+Marker yellow	Trapez
+Stamp			Circle_Cut
+Eraser			Arrow

@@ -1,0 +1,4 @@
+20mm:
+Pirate Ship		Arrow
+Treasure Chest	Moon
+Lighthouse		Heart

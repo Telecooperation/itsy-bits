@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="shapeNames">
+        <item>Circle</item>
+        <item>Circle_Notch</item>
+        <item>Triangle</item>
+        <item>Arrowhead</item>
+        <item>Square</item>
+        <item>Simcard</item>
+        <item>Square_Notch</item>
+        <item>Star</item>
+        <item>Star_Notch</item>
+    </string-array>
+</resources>

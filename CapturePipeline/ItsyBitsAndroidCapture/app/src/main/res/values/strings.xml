@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ShapeReader</string>
+
+    <string name="start_button">Start</string>
+    <string name="stop_button">Stop</string>
+
+    <string name="shapePrompt">Form auswählen</string>
+</resources>

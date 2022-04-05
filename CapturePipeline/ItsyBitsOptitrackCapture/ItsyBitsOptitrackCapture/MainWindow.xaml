@@ -1,0 +1,154 @@
+﻿<Window x:Class="ItsyBitsOptitrackCapture.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItsyBitsOptitrackCapture"
+        mc:Ignorable="d"
+        Closing="Window_Closing" Title="ItsyBitsOptitrackCapture" Height="1000" Width="1800">
+    <Window.Resources>
+        <Storyboard x:Key="fadeIn">
+            <DoubleAnimation BeginTime="0:0:0.0" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.8"/>
+        </Storyboard>
+        <local:AngleToBrushConverter x:Key="AngleToBrushConverter"></local:AngleToBrushConverter>
+        <local:CircleCoordinateConverter x:Key="CircleCoordinateConverter"></local:CircleCoordinateConverter>
+    </Window.Resources>
+    
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,30">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="OptiTrack" HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="300"  Margin="20,19,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button Name="optiButton" Content="Start&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Height="24" Click="Opti_Click" />
+
+                        <Label Content="Stopped" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34"  x:Name="optitrackStatus"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Logging" HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="300" Margin="20,19,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button Name="logButton" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Height="24" Click="Button_Click" />
+                        <Label Content="Stopped" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" x:Name="logStatus" Margin="0,0,0,-0.667"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Debug" HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Margin="20,19,0,0">
+                        <TextBox  HorizontalScrollBarVisibility="Hidden"
+         VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="700" Name="debug" />
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                 <Button Name="CalibrateButton" IsEnabled="True" Click="CalibrateButton_Click"  Height="50" Padding="10">Calibrate</Button>
+                <!--<Button Name="StartStudyButton" IsEnabled="False" Click="DoItButtonClick" Height="50" Padding="10" Margin="0,0,10,0">Start study!</Button>-->
+                    <!--<Button Name="CancelConditionButton" IsEnabled="False" Click="CancelConditionButtonClick" Height="50" Padding="10">Cancel Condition</Button>-->
+                    
+                    <Button Name="RecordButton" IsEnabled="False" Click="RecordButton_Click"  Height="50" Padding="10">Record</Button>
+                </StackPanel>
+                <Label>Participant: </Label><TextBox Text="{Binding Participant, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        <Border Name="EmergencyBorder" BorderBrush="LightGray"  BorderThickness="2">
+            <Grid Height="700" Name="Animate">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"> </RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.ColumnSpan="2" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="Text">Welcome! Please enter the participant ID, calibrate and press record</Label>
+                
+                <!--LEFT -->
+                <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Name="GridLeft">
+                    <ListBox HorizontalAlignment="Left" Margin="0,0,0,0" 
+                        Name="listBoxKeys" VerticalAlignment="Top"
+                        ItemsSource="{Binding Path=Shapes}"                         
+                        SelectedItem="{Binding Path=CurrentShape,Mode=TwoWay}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                                    <TextBlock Text="{Binding Name}" Margin="0,0,0,0" Height="Auto" MinWidth="80" MaxWidth="80" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Size}" Margin="0,0,0,0" Height="Auto" MinWidth="80" MaxWidth="80" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Image Width="50" Source="{Binding Image}" Stretch="Uniform" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                
+                <!--MIDDLE -->
+                <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Name="GridMiddle" Visibility="Collapsed">
+                    <Border BorderBrush="Transparent" BorderThickness="4" HorizontalAlignment="Left" Name="ShapeImageBorder">
+                        <Image Name="ShapeImage" RenderTransformOrigin="0.5 0.5" Stretch="Uniform" />
+                    </Border>
+                </Grid>
+
+                <!--RIGHT -->
+                <Grid Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Name="GridRight" Visibility="Hidden">
+                    <Border BorderBrush="Transparent" BorderThickness="2">
+                        <Grid>    
+                            <ItemsControl
+                 Margin="20,20,0,0"   
+                 HorizontalAlignment="Left" ItemsSource="{Binding Path=Angles}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <!--<WrapPanel></WrapPanel>-->
+                                        <Grid></Grid>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+   <!--                                     <StackPanel Width="80" Margin="0,0,10,10" TextBlock.Foreground="White" Orientation="Horizontal" Background="{Binding Path=Value, Converter={StaticResource AngleToBrushConverter}}">
+                                            <StackPanel.RenderTransform>
+                                                <TranslateTransform 
+                                                    X="{Binding Path=Key,ConverterParameter=cos, Converter={StaticResource CircleCoordinateConverter}}" 
+                                                    Y="{Binding Path=Key,ConverterParameter=sin, Converter={StaticResource CircleCoordinateConverter}}" 
+                                                    />
+                                            </StackPanel.RenderTransform>
+                                            <TextBlock Margin="20,0,0,0" Text="{Binding Path=Key}" />
+                                            <TextBlock>°</TextBlock>
+                                            <TextBlock Margin="20,0,0,0" Text="{Binding Path=Value}" />
+                                        </StackPanel>
+-->
+                                        <Canvas Height="300" Width="300">
+                                            <StackPanel RenderTransformOrigin="0.5 0.5" Width="5" Height="20" Margin="0,0,10,10" TextBlock.Foreground="White" Orientation="Horizontal" Background="{Binding Path=Value, Converter={StaticResource AngleToBrushConverter}}"
+                                                    Canvas.Left="{Binding Path=Key,ConverterParameter=cos, Converter={StaticResource CircleCoordinateConverter}}" 
+                                                    Canvas.Top="{Binding Path=Key,ConverterParameter=sin, Converter={StaticResource CircleCoordinateConverter}}" 
+                                                    >
+                                                <StackPanel.RenderTransform>
+                                                    <RotateTransform Angle="{Binding Path=Key}"></RotateTransform>
+                                                </StackPanel.RenderTransform>
+                                           <!-- <TextBlock Margin="5,0,0,0" Text="{Binding Path=Key}" />
+                                                <TextBlock>°</TextBlock>-->
+                                                <!--<TextBlock Margin="20,0,0,0" Text="{Binding Path=Value}" />-->
+                                        </StackPanel>
+                                            
+                                            
+                                        </Canvas>
+                                                
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Path Stretch="Fill" Fill="LightGray" 
+          Data="M 0,110 70,110 70,90 120,120 70,150 70,130 0,130 Z"
+          HorizontalAlignment="Center"  Width="100" Height="120" Margin="100,35,2,0"
+          RenderTransformOrigin=".5,.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="3" ScaleY="1"></ScaleTransform>
+                                    <RotateTransform Angle="{Binding CurrentAngle}" />
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </Border>
+                </Grid>
+        </Grid>
+        </Border>
+    </StackPanel>
+</Window>
