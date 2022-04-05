@@ -1,20 +1,15 @@
 # 3DModels
 
-Home of all the 3D models used for Itsy Bits.
+Home of all the 3D models used as example applications for Itsy-Bits.
 
-## Use Case Models
-- Seafarer game for tablet
-- Trump cognition test for smartphone
-- Flip flops authentication
-- Mixing console for smartphone
-- PDF Editor for tablet
+## Models of Example Applications
+- Seafarer boardgame for tablets
+- Learning with a tangible test for smartphones
+- Mixing console for smartphones
+- Tangibled PDF Editor for tablets
 
 
-## Other Models
-### Calibration Case
-Nexus 5 inverse case to fixate test objects
-
-### Study Objects
-Objects used to collect ground-truth data set.
+## Study Objects
+Contains a Nexus 5 inverse case to fixate test objects (never actually used) and also all study objects used to collect ground-truth data set.
 
 
