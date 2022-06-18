@@ -12,7 +12,7 @@
     ·
     <a href="/assets/schmitz2021itsybits.pdf">View PDF</a>
     ·
-    <a href="https://youtu.be/0AUrrtwaPVQ">Watch Talk</a>
+    <a href="https://youtu.be/fI3zZz4fnMY">Watch Talk</a>
     ·
     <a href="https://doi.org/10.1145/3411764.3445502">Follow DOI</a>
     </h4>
